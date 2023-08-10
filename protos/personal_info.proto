@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_package = "com.rjones.restservice";
+
+message PersonalInfoReply {
+  // No content
+}
+
+message PersonalInfo {
+  string firstName = 1;
+  string lastName = 2;
+  DateOfBirth dob = 3;
+  string email = 4;
+  string phoneNumber = 5;
+
+  // Modified times stored as a unix timestamp (seconds)
+  uint64 modifiedTs = 6;
+}
+
+message DateOfBirth {
+  enum Month {
+    UNDEFINED = 0;
+    JAN = 1;
+    FEB = 2;
+    MAR = 3;
+    APR = 4;
+    MAY = 5;
+    JUN = 6;
+    JUL = 7;
+    AUG = 8;
+    SEP = 9;
+    OCT = 10;
+    NOV = 11;
+    DEC = 12;
+  }
+
+  uint32 year = 1;
+  Month month = 2;
+  uint32 day = 3;
+}
+
+service SetPersonalInfo {
+  rpc SetPersonalInfo(PersonalInfo) returns (PersonalInfoReply) {}
+}
