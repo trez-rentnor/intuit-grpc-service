@@ -54,6 +54,7 @@ public class PersonalInfoController {
 					.setEmail(newPersonalInfo.email())
 					.setPhoneNumber(newPersonalInfo.phoneNumber())
 					.setModifiedTs(System.currentTimeMillis() / 1000)
+					.setAddress(newPersonalInfo.Address())
 					.build();
 
 			grpcStub.setPersonalInfo(personalInfo);
